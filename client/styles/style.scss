@@ -1,0 +1,281 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// Flexbox Helper
+.d-flex {
+    display: flex;
+}
+
+.d-inline-block {
+    display: inline-block;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.p-relative {
+    position: relative;
+}
+
+$justify: (
+  between: space-between,  
+  center: center,  
+  around: space-around,  
+  start: start,  
+  end: end,  
+);
+
+$align: (
+    stretch: stretch,
+    center: center,
+    flex-start: flex-start,
+    flex-end: flex-end,
+    baseline: baseline
+);
+
+@each $key, $val in $justify {
+    .justify-content-#{$key} {
+        justify-content: $val;
+    } 
+}
+
+@each $key, $val in $align {
+    .align-items-#{$key} {
+        align-items: $val;
+    } 
+}
+
+// typography 
+$fontWeight:(
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900,
+);
+
+@each $weight in $fontWeight {
+    .fw-#{$weight} {
+        font-weight: $weight;
+    }
+}
+
+.mr-1 {
+   margin-right: 5px; 
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+$margin: (
+    0 : 0,
+    1 : 5px,
+    2 : 10px,
+    3 : 15px,
+    4 : 20px,
+    5 : 24px,
+    6 : 30px,
+    auto: auto
+);
+
+$padding: (
+    0 : 0,
+    1 : 5px,
+    2 : 10px,
+    3 : 15px,
+    4 : 20px,
+    5 : 24px,
+    6 : 30px,
+);
+
+@each $mTag, $mVal in $margin {
+    .m-#{$mTag} {
+        margin: $mVal;
+    }
+
+    .mr-#{$mTag} {
+        margin-right: $mVal;
+    }
+
+    .ml-#{$mTag} {
+        margin-left: $mVal;
+    }
+
+    .mt-#{$mTag} {
+        margin-top: $mVal;
+    }
+
+    .mb-#{$mTag} {
+        margin-bottom: $mVal;
+    }
+
+    .mx-#{$mTag} {
+        margin-left: $mVal;
+        margin-right: $mVal;
+    }
+
+    .my-#{$mTag} {
+        margin-top: $mVal;
+        margin-bottom: $mVal;
+    }
+
+}
+
+
+
+@each $pTag, $pVal in $padding {
+    .p-#{$pTag} {
+        padding: $pVal;
+    }
+
+    .pt-#{$pTag} {
+        padding-top: $pVal;
+    }
+
+    .pb-#{$pTag} {
+        padding-bottom: $pVal;
+    }
+
+    .pl-#{$pTag} {
+        padding-left: $pVal;
+    }
+
+    .pr-#{$pTag} {
+        padding-right: $pVal;
+    }
+
+    .px-#{$pTag} {
+        padding-left: $pVal;
+        padding-right: $pVal;
+    }
+
+    .py-#{$pTag} {
+        padding-top: $pVal;
+        padding-bottom: $pVal;
+    }
+
+   
+}
+
+
+
+
+// main desing
+app-root {
+    display: block;
+    height: 100vh;
+    width: 100vw;
+}
+
+app-bookshelf {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    app-bookshelf-sidebar {
+        display: block;
+        height: 100vh;
+        width: 80px;
+        border-right: 1px solid #0e0e0e;
+        padding: 20px 0;
+
+        #bookshelf-sidebar {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+
+            .menu {
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    app-bookshelf-content {
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+        width: 100%;
+        padding: 30px;
+        overflow-y: auto; 
+    }
+
+    app-book {
+        display: block;
+
+        #book {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 140px;
+            height: 140px;
+            background-color: rgb(245, 245, 245);
+            padding: 20px;
+            border-radius: 5px;
+            margin: 0 15px;
+
+            img {
+                width: 60%;
+                object-fit: contain;
+                mix-blend-mode: multiply;
+            }
+
+            .desc {
+                width: 100%;
+                margin-top: 10px;
+
+                .title,
+                .subtitle {
+                    width: 100%;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+    }
+}
+
+.btn {
+    background-color: transparent;
+    padding: 16px;
+    border: 1px solid #0f0f0f;
+    outline: none;
+    border-radius: 2px;
+
+    img {
+        width: 24px;
+    }
+}
+
